@@ -2,15 +2,14 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import Chart from '../components/chart';
 import LineChart from '../components/charjs-chart';
+import moment from 'moment';
 class WeatherList extends Component {
   renderWeather(cityData) {
-    // console.log("2. cityData = ", cityData);
 
     const temps = cityData.list.map(weather => weather.main.temp-273);
     const pressures = cityData.list.map(weather => weather.main.pressure);
     const humidities = cityData.list.map(weather => weather.main.humidity);
-    const labels=cityData.list.map(weather=>weather.dt_txt);
-    // console.log(temps);
+    const labels=cityData.list.filter((e,i)=>(i%2==0)).map(weather=>moment(weather.dt_txt).format('ddd hh A'));
 
     return (
       <div style={{backgroundColor:"white"}}>
