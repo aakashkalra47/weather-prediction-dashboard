@@ -21,6 +21,7 @@ export default class chart extends Component{
         <div>
             <Line
                 data={data}
+                height={100}
                 options={{
                     title:{
                     display:true,
